@@ -1,0 +1,48 @@
+{{! //////////////////////////////////////////////////////////////// }}
+{{!  /src/views/dashboard.handlebars -  HTML con sintaxis de Handlebars  }}
+{{! //////////////////////////////////////////////////////////////// }}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <section class='vh-100 gradient-custom'>
+      <div class='container py-5 h-100'>
+        <div class='row d-flex justify-content-center align-items-center h-100'>
+          <div class='col-12 col-md-6 col-lg-4 col-xl-4'>
+            <div class='card' style='border-radius: 1rem;'>
+              <div class='card-body p-4 text-start'>
+                <h2 class='fw-bold mb-3 text-center'>Dashboard ADMIN</h2>
+                <div class='mb-4 text-center'>
+                  <p class='font_id mb-2'><span class='fw-bold text-uppercase text-danger'>{{user.role}}:</span> <span id='userEmail'>{{user.email}}</span></p>
+                </div>
+                <div class='d-grid gap-2 mb-3'>
+                  {{! <button type='button' class='btn btn-dark btn-lg' disabled>Administrar Productos</button> }}
+                  <a class='btn btn-dark btn-lg' href='/admin/products'>Administrar Productos</a>
+                </div>
+                <div class='d-grid gap-2 mb-3'>
+                  <button type='button' class='btn btn-dark btn-lg' disabled>Gestionar Users</button>
+                </div>
+                <div class='d-grid gap-2 mb-3'>
+                  <button type='button' class='btn btn-dark btn-lg' disabled>Configurar Tienda</button>
+                </div>
+                <div class='d-grid gap-2 mb-3'>
+                  <a class='btn btn-warning btn-lg' href='/current'>Current session</a>
+                </div>
+                <div class='d-grid gap-2 mb-3'>
+                  <a class='btn btn-outline-danger btn-lg' href='/api/session/auth/logout'>Logout</a>
+                </div>
+                <div class='text-center border-top'>
+                  <h3 class='mb-0 mt-3'>Freelo ECOM</h3>
+                  <p class='form_p'>ONLINE <span class='fw-bold'>SHOP</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src='/js/dashboard/index.js'></script>
+  </body>
+</html>

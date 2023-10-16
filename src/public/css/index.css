@@ -1,0 +1,71 @@
+/* ************************************************************************** */
+/* /src/public/css/index.css - .css de /src/views/layouts/main.handlebars
+ - Aplica a todas las plantillas de handlebars
+/* ************************************************************************** */
+
+body {
+  background-color: rgb(222, 222, 222) !important;
+}
+a {
+  text-decoration: none;
+}
+/* /src/views/products.handlebars  */
+.product-card {
+  margin-bottom: 20px;
+}
+.font_id {
+  font-size: 0.8rem;
+}
+.products_header {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  z-index: 100;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.section_products {
+  z-index: -1;
+  margin-top: 100px;
+}
+.section_carts {
+  z-index: -1;
+  margin-top: 70px;
+}
+
+/* Estilo personalizado para el enlace de página activa */
+.pagination .page-item.active .page-link {
+  background-color: #000000;
+  border-color: #ffffff;
+}
+
+/* Estilo personalizado para el enlace de "Página siguiente" */
+.pagination .page-item .page-link[href]:not(.prev-link) {
+  color: #000000;
+}
+
+/* Elimina la sombra azul en los enlaces de paginación al hacer click */
+.pagination .page-link:focus,
+.pagination .page-item.active .page-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* /src/views/carts.handlebars */
+.cart {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+/* /src/views/inicio.handlebars  */
+.inicio {
+  height: 80vh;
+}
+
+/* /src/views/login.handlebars  */
+
+.form_p {
+  font-size: 0.8rem;
+}
+.form-control:focus {
+  box-shadow: none;
+}

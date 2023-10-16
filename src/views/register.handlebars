@@ -1,0 +1,59 @@
+{{! //////////////////////////////////////////////////////////////////////////// }}
+{{!  /src/views/register.handlebars -  HTML con sintaxis de Handlebars   }}
+{{! //////////////////////////////////////////////////////////////////////////// }}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <section>
+      <div class='container'>
+        <div class='row d-flex justify-content-center align-items-center mt-5 mb-5'>
+          <div class='col-12 col-md-8 col-lg-6 col-xl-5'>
+            <div class='card'>
+              <div class='card-body p-4 text-start'>
+                <form class='mb-0' id='registerForm' method='POST'>
+                  <div>
+                    <h3 class='fw-bold mb-2 text-uppercase text-center'>Registro</h3>
+                    <div class='form-outline form-white mb-2'>
+                      <input type='text' id='first_name' class='form-control form-control-lg' name='first_name' required />
+                      <label class='form-label ps-2' for='first_name'>First Name</label>
+                    </div>
+                    <div class='form-outline form-white mb-2'>
+                      <input type='text' id='last_name' class='form-control form-control-lg' name='last_name' required />
+                      <label class='form-label ps-2' for='last_name'>Last Name</label>
+                    </div>
+                    <div class='form-outline form-white mb-2'>
+                      <input type='email' id='email' class='form-control form-control-lg' name='email' required />
+                      <label class='form-label ps-2' for='email'>Email</label>
+                    </div>
+                    <div class='form-outline form-white mb-2'>
+                      <input type='number' id='age' class='form-control form-control-lg' name='age' required />
+                      <label class='form-label ps-2' for='age'>Age</label>
+                    </div>
+                    <div class='form-outline form-white mb-2'>
+                      <input type='password' id='password' class='form-control form-control-lg' name='password' required />
+                      <label class='form-label ps-2' for='password'>Password</label>
+                    </div>
+                    <div class='d-grid gap-2 mb-3'>
+                      <button class='btn btn-dark btn-lg' type='submit'>Registrarse</button>
+                    </div>
+                  </div>
+                  <div class='mb-4'>
+                    <p class='mb-0'>Ya tienes una cuenta? <a href='/' class='text-dark fw-bold'>Login</a></p>
+                  </div>
+                  <div class='text-center border-top'>
+                    <h3 class='mb-0 mt-3'>Freelo ECOM</h3>
+                    <p class='form_p m-0'>ONLINE <span class='fw-bold'>SHOP</span></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src='/js/register/index.js'></script>
+  </body>
+</html>

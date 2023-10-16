@@ -1,0 +1,111 @@
+{{! //////////////////////////////////////////////////////////////////////////// }}
+{{!  /src/views/products.handlebars -  HTML con sintaxis de Handlebars   }}
+{{! //////////////////////////////////////////////////////////////////////////// }}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <header class='products_header p-2'>
+      <div class='container'>
+        <div class='d-flex align-items-center justify-content-between p-2'>
+          <div>
+            <h4 class='m-0'>Freelo ECOM</h4>
+            <p class='form_p d-none d-md-block text-center m-0'>ONLINE <span class='fw-bold'>SHOP</span></p>
+          </div>
+          {{!////////////////////// }}
+          <div class='d-flex justify-content-center align-items-center ms-md-4'>
+            <div class='d-flex align-items-center mb-2'>
+              <div class='d-flex align-items-center pe-2'>
+                <div class='me-2'>
+                  <img src='../../img/cart.svg' alt='cart' />
+                </div>
+                <h5 class='m-0 text-danger fw-bold'><span id='totalProductosCarrito'>{{totalCartProducts}}</span></h5>
+              </div>
+              <div class='me-4'>
+                <a class='btn btn-dark ms-2' href='/carts/{{user.cart}}' role='button'>Carrito</a>
+              </div>
+            </div>
+            <div class='text-secondary d-none d-md-block'>
+              <p class='font_id mb-1'><span class='fw-bold'>Cart ID: </span> <span id='cartId'>{{user.cart}}</span></p>
+            </div>
+          </div>
+          <div class='d-flex justify-content-center align-items-center'>
+            <div class='d-flex flex-column flex-md-row justify-content-center align-items-center mb-2 me-4'>
+              <div>
+                <a class='btn btn-warning mb-2 mb-md-0' href='/user' role='button'>Perfil</a>
+              </div>
+              <div class='ps-2'>
+                <a class='btn btn-outline-danger' href='/api/session/auth/logout'>Logout</a>
+              </div>
+            </div>
+            <div class='text-secondary d-none d-md-block'>
+              <div class='text-secondary d-none d-md-block'>
+                <p class='font_id mb-0'><span class='fw-bold'>Role: </span> <span class='fw-bold text-danger text-uppercase'>{{user.role}} </span> </p>
+                <p class='font_id mb-0'><span class='fw-bold'>Email: </span> <span id='userEmail'>{{user.email}}</span></p>
+                <p class='font_id mb-0'><span class='fw-bold'>User ID: </span> <span id='cartId'>{{user._id}}</span></p>
+              </div>
+            </div>
+          </div>
+          {{!////////////////////// }}
+        </div>
+      </div>
+      <div class='text-secondary d-none d-md-block text-center p-1 pt-2 border-top'>
+        <p class='font_id mb-0'><span class='fw-bold h6'>Bienvenido</span> <span class='h6 fw-bold' id='cartId'>{{user.first_name}}!</span></p>
+      </div>
+    </header>
+    <div class='container p-5'>
+      <div class='section_products'>
+        <div class='row'>
+          <div class='text-center'>
+            <h3 class='fw-bold mb-3 pt-4 text-uppercase text-center'>Productos</h3>
+          </div>
+          {{#each products}}
+            <div class='col-md-4'>
+              <div class='card product-card'>
+                <div class='card-body p-4'>
+                  <h5 class='card-title'>{{title}}</h5>
+                  <p class='card-text'>{{description}}</p>
+                  <p class='card-text'><span class='fw-bold'>Código: </span>{{code}}</p>
+                  <p class='card-text'><span class='fw-bold'>Precio: </span>{{price}}</p>
+                  <p class='card-text'><span class='fw-bold'>Stock: </span>{{stock}}</p>
+                  <p class='card-text'><span class='fw-bold'>Categoría: </span>{{category}}</p>
+                  <p class='card-text font_id'><span class='fw-bold'>Product ID: </span>{{_id}}</p>
+                  <p class='card-text font_id'><span class='fw-bold'>Owner: </span>{{owner}}</p>
+                  <button class='btn btn-primary w-100' onclick='addToCart("{{_id}}")'>Agregar al carrito</button>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+
+        </div>
+        <!-- Sección de paginación -->
+        <div class='row mt-4'>
+          <div class='col-12'>
+            <nav aria-label='Pagination'>
+              <ul class='pagination justify-content-center'>
+                {{#if hasPrevPage}}
+                  <li class='page-item'>
+                    <a class='page-link' href='{{prevLink}}'>&laquo; Previous page</a>
+                  </li>
+                {{/if}}
+                <!-- Mostrar el número de página actual -->
+                <li class='page-item active'>
+                  <span class='page-link'>Page {{currentPage}}</span>
+                </li>
+                {{#if hasNextPage}}
+                  <li class='page-item'>
+                    <a class='page-link' href='{{nextLink}}'>Next page &raquo;</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src='/js/products/index.js'></script>
+  </body>
+</html>

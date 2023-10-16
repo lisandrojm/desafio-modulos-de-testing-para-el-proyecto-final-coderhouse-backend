@@ -1,0 +1,68 @@
+{{! //////////////////////////////////////////////////////////////// }}
+{{!  /src/views/home.handlebars -  HTML con sintaxis de Handlebars   }}
+{{! //////////////////////////////////////////////////////////////// }}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <div class='container pt-3 text-center'>
+      <h4 class='text-center text-danger'>Home</h4>
+      <h2 class='text-center pb-2'>Lista de Productos</h2>
+      <div class='table-responsive'>
+        <table class='table table-bordered table-striped'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Código</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Categoría</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+              <tr>
+                <td>{{_id}}</td>
+                <td>{{title}}</td>
+                <td>{{description}}</td>
+                <td>{{code}}</td>
+                <td>{{price}}</td>
+                <td>{{stock}}</td>
+                <td>{{category}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class='row mt-4'>
+        <div class='col-12'>
+          <nav aria-label='Pagination'>
+            <ul class='pagination justify-content-center'>
+              {{#if hasPrevPage}}
+                <li class='page-item'>
+                  <a class='page-link' href='{{prevLink}}'>&laquo; Previous page</a>
+                </li>
+              {{/if}}
+              <!-- Mostrar el número de página actual -->
+              <li class='page-item active'>
+                <span class='page-link'>Page {{currentPage}}</span>
+              </li>
+              {{#if hasNextPage}}
+                <li class='page-item'>
+                  <a class='page-link' href='{{nextLink}}'>Next page &raquo;</a>
+                </li>
+              {{/if}}
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class='text-center mt-2'>
+        <a class='btn btn-primary' href='/realtimeproducts' role='button'>Real Time Products</a>
+      </div>
+    </div>
+  </body>
+</html>

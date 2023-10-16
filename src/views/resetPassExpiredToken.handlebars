@@ -1,0 +1,45 @@
+{{! //////////////////////////////////////////////////////////////// }}
+{{!  /src/views/resetPassExipedToken.handlebars -  HTML con sintaxis de Handlebars  }}
+{{! //////////////////////////////////////////////////////////////// }}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <section class='vh-100 gradient-custom'>
+      <div class='container py-5 h-100'>
+        <div class='row d-flex justify-content-center align-items-center h-100'>
+          <div class='col-12 col-md-8 col-lg-6 col-xl-5'>
+            <div class='card'>
+              <div class='card-body p-4 text-start'>
+                <form id='recoveryForm' method='GET' onsubmit='submitForm(event)'>
+                  <div>
+                    <h3 class='fw-bold mb-3 text-center text-danger'>Link expirado</h3>
+                    <p class='text-secondary'>El link expira a los 60 minutos de haber sido enviado por correo. Vuelve a intentarlo.</p>
+                    <div class='form-outline form-white mb-4 border-top pt-3'>
+                      <label class='form-label ps-2' for='email'>Email</label>
+                      <input type='email' id='email' name='email' class='form-control form-control-lg' placeholder='usuario@correo.com' required />
+                      <p class='text-muted ps-2 pt-2'>Escribe tu correo electrónico de reestablecimiento</p>
+                    </div>
+                    <div class='d-grid gap-2 mb-3'>
+                      <button class='btn btn-dark btn-lg' type='submit'>Reenviar correo</button>
+                    </div>
+                    <div class='mb-4'>
+                      <p class='mb-0'>Volver a <a href='/' class='text-dark fw-bold'>Login</a></p>
+                    </div>
+                  </div>
+                  <div class='text-center border-top'>
+                    <h3 class='mb-0 mt-3'>Freelo ECOM</h3>
+                    <p class='form_p'>ONLINE <span class='fw-bold'>SHOP</span></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src='/js/resetPassExpiredToken/index.js'></script>
+  </body>
+</html>

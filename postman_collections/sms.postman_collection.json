@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "21f1dbd9-4a13-4eac-827f-3d8d3ea280cb",
+		"name": "sms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27650411",
+		"_collection_link": "https://www.postman.com/lisandrojm/workspace/lisandrojm/collection/27650411-21f1dbd9-4a13-4eac-827f-3d8d3ea280cb?action=share&source=collection_link&creator=27650411"
+	},
+	"item": [
+		{
+			"name": "sendSMS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"to\": \"+54 11 5324 8798\",\r\n    \"body\": \"Hola mundo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sms"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sendSMS",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\": \"+54 11 5324 8798\",\r\n    \"body\": \"Hola mundo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/mailer/sms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mailer",
+								"sms"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

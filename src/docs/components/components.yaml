@@ -1,0 +1,301 @@
+openapi: 3.0.1
+info:
+  title: Freelo ECOM API
+  version: 1.0.0
+  description: API para administrar un ecommerce
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        price:
+          type: number
+        stock:
+          type: integer
+        category:
+          type: string
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        userId:
+          type: string
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:
+                type: string
+              quantity:
+                type: integer
+
+  parameters:
+    productIdParam:
+      name: productId
+      in: path
+      required: true
+      description: ID del producto
+      schema:
+        type: string
+    cartIdParam:
+      name: cartId
+      in: path
+      required: true
+      description: ID del carrito
+      schema:
+        type: string
+  responses:
+    200Success:
+      description: Respuesta exitosa
+      content:
+        application/json:
+          example:
+            status: success
+            payload: []
+    201Created:
+      description: Producto creado exitosamente
+      content:
+        application/json:
+          example:
+            status: success
+            payload:
+              _id: ProductoID
+              title: Nombre del Producto
+              description: Descripción del Producto
+              code: Código del Producto
+              price: 99.99
+              stock: 100
+              category: Categoría del Producto
+    400BadRequest:
+      description: Solicitud incorrecta
+    404NotFound:
+      description: Producto no encontrado
+    500ServerError:
+      description: Error interno del servidor
+paths:
+  /api/products:
+    get:
+      summary: Obtener todos los productos
+      tags:
+        - Products
+      description: Obtiene una lista de todos los productos disponibles.
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    post:
+      summary: Agregar un nuevo producto
+      tags:
+        - Products
+      description: Agrega un nuevo producto al sistema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              title: Nombre del Producto
+              description: Descripción del Producto
+              code: Código del Producto
+              price: 99.99
+              stock: 100
+              category: Categoría del Producto
+      responses:
+        '201':
+          $ref: '#/components/responses/201Created'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+  /api/products/{productId}:
+    get:
+      summary: Obtener un producto por ID
+      tags:
+        - Products
+      description: Obtiene un producto específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/productIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    put:
+      summary: Actualizar un producto por ID
+      tags:
+        - Products
+      description: Actualiza un producto específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/productIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              title: Nuevo Nombre del Producto
+              description: Nueva Descripción del Producto
+              price: 129.99
+      responses:
+        '200':
+          $ref: '#/components/responses/201Created'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    delete:
+      summary: Eliminar un producto por ID
+      tags:
+        - Products
+      description: Elimina un producto específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/productIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+  /api/carts:
+    get:
+      summary: Obtener todos los carritos
+      tags:
+        - Carts
+      description: Obtiene una lista de todos los carritos disponibles.
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    post:
+      summary: Agregar un nuevo carrito
+      tags:
+        - Carts
+      description: Agrega un nuevo carrito al sistema.
+      responses:
+        '201':
+          $ref: '#/components/responses/201Created'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+  /api/carts/{cartId}:
+    get:
+      summary: Obtener un carrito por ID
+      tags:
+        - Carts
+      description: Obtiene un carrito específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/cartIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    put:
+      summary: Actualizar un carrito por ID
+      tags:
+        - Carts
+      description: Actualiza un carrito específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/cartIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/201Created'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    delete:
+      summary: Eliminar un carrito por ID
+      tags:
+        - Carts
+      description: Elimina un carrito específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/cartIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+  /api/carts/{cartId}/products:
+    get:
+      summary: Obtener productos en un carrito por ID
+      tags:
+        - Carts
+      description: Obtiene los productos en un carrito específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/cartIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    post:
+      summary: Agregar un producto a un carrito por ID
+      tags:
+        - Carts
+      description: Agrega un producto a un carrito específico por su ID.
+      parameters:
+        - $ref: '#/components/parameters/cartIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              productId: ProductoID
+              quantity: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+    delete:
+      summary: Eliminar un producto de un carrito por ID
+      tags:
+        - Carts
+      description: Elimina un producto de un carrito específico por su ID.
+      parameters:
+        - name: cartId
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+        - name: productId
+          in: query
+          required: true
+          description: ID del producto a eliminar
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200Success'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500ServerError'

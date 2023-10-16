@@ -1,0 +1,45 @@
+{{! //////////////////////////////////////////////////////////////// }}
+{{!  /src/views/profile.handlebars -  HTML con sintaxis de Handlebars  }}
+{{! //////////////////////////////////////////////////////////////// }}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <section class='vh-100 gradient-custom'>
+      <div class='container py-5 h-100'>
+        <div class='row d-flex justify-content-center align-items-center h-100'>
+          <div class='col-12 col-md-8 col-lg-6 col-xl-5'>
+            <div class='card' style='border-radius: 1rem;'>
+              <div class='card-body p-4 text-start'>
+                <h2 class='fw-bold mb-3 text-center'>Current session</h2>
+                <div class='mb-4'>
+                  <p><strong>Role:</strong> {{user.role}}</p>
+                  {{#if user.first_name}}
+                    <p><strong>Nombre:</strong> {{user.first_name}}</p>
+                  {{/if}}
+                  {{#if user.last_name}}
+                    <p><strong>Apellido:</strong> {{user.last_name}}</p>
+                  {{/if}}
+                  <p><strong>Email:</strong> {{user.email}}</p>
+                  {{#ifNotNull user.age}}
+                    <p><strong>Edad:</strong> {{user.age}} años</p>
+                  {{/ifNotNull}}
+                </div>
+                <div class='d-grid gap-2 mb-3'>
+                  <a class='btn btn-outline-danger btn-lg' href='/api/session/auth/logout'>Logout</a>
+                </div>
+                <div class='text-center border-top'>
+                  <h3 class='mb-0 mt-3'>Freelo ECOM</h3>
+                  <p class='form_p'>ONLINE <span class='fw-bold'>SHOP</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src='/js/profile/index.js'></script>
+  </body>
+</html>

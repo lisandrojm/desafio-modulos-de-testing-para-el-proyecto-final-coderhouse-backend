@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "2a1b719f-ed0a-4c6b-baa9-4bb22b376a8b",
+		"name": "messages",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27650411",
+		"_collection_link": "https://www.postman.com/lisandrojm/workspace/lisandrojm/collection/27650411-2a1b719f-ed0a-4c6b-baa9-4bb22b376a8b?action=share&source=collection_link&creator=27650411"
+	},
+	"item": [
+		{
+			"name": "getAllMessages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/chat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addUserMessage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": \"testingadd@gmail.com\",\r\n  \"message\": \"Este es un mensaje de Postman NUEVO\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/chat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUserMessage",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/chat/:mid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"chat",
+						":mid"
+					],
+					"variable": [
+						{
+							"key": "mid",
+							"value": "64d78c073856961875b47707"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

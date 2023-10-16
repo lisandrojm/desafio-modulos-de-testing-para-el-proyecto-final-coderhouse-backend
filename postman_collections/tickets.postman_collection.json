@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "019ba724-0d01-4bc5-b526-51b5351ed26b",
+		"name": "tickets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27650411",
+		"_collection_link": "https://www.postman.com/lisandrojm/workspace/lisandrojm/collection/27650411-019ba724-0d01-4bc5-b526-51b5351ed26b?action=share&source=collection_link&creator=27650411"
+	},
+	"item": [
+		{
+			"name": "getTickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTicket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"TICKET001\",\r\n  \"purchase_datetime\": \"2023-09-03T10:00:00Z\",\r\n  \"amount\": 50,\r\n  \"purchaser\": \"Usuario de ejemplo\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteTicket",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tickets/:tid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tickets",
+						":tid"
+					],
+					"variable": [
+						{
+							"key": "tid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTicketById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tickets/:tid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tickets",
+						":tid"
+					],
+					"variable": [
+						{
+							"key": "tid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

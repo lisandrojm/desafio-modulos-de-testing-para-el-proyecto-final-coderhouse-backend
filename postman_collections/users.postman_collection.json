@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "f64c01ca-6d64-4db6-8fd4-56c8a12cdd2e",
+		"name": "users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27650411",
+		"_collection_link": "https://www.postman.com/lisandrojm/workspace/lisandrojm/collection/27650411-f64c01ca-6d64-4db6-8fd4-56c8a12cdd2e?action=share&source=collection_link&creator=27650411"
+	},
+	"item": [
+		{
+			"name": "getUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"first_name\": \"Postman first_name\",\n  \"last_name\": \"Postman last_name1\",\n  \"age\": 25,\n  \"password\": \"1111\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin/:uid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin",
+						":uid"
+					],
+					"variable": [
+						{
+							"key": "uid",
+							"value": "64cf7005cf1053a7ba71dfe7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin/:uid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin",
+						":uid"
+					],
+					"variable": [
+						{
+							"key": "uid",
+							"value": "64cf7005cf1053a7ba71dfe7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recoveryUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"postman@correo.com\",\r\n  \"password\": \"9999\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin/recovery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin",
+						"recovery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin/:uid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin",
+						":uid"
+					],
+					"variable": [
+						{
+							"key": "uid",
+							"value": "64e48b02516ab930e4b5386b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resetPass",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"user@correo.com\",\r\n  \"password\": \"1111\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin/resetpass",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin",
+						"resetpass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resetPassByEmail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/session/useradmin/resetpassbyemail?email=lisandrojm@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"useradmin",
+						"resetpassbyemail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "lisandrojm@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUserPremium",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/premium/:uid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"premium",
+						":uid"
+					],
+					"variable": [
+						{
+							"key": "uid",
+							"value": "651407ecad3611db97d13907"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

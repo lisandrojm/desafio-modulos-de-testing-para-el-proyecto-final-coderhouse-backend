@@ -1,0 +1,122 @@
+{{! //////////////////////////////////////////////////////////////////////////// }}
+{{!  /src/views/realTimeProducts.handlebars -  HTML con sintaxis de Handlebars   }}
+{{! //////////////////////////////////////////////////////////////////////////// }}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='css/{{style}}' />
+  </head>
+  <body>
+    <div class='container pt-3 text-center'>
+      <h4 class='text-center text-primary'>Real Time Products</h4>
+      <h2 class='text-center pb-2'>Lista de productos</h2>
+      <div class='table-responsive'>
+        <table id='product-table' class='table table-bordered table-striped'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Código</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Categoría</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+              <tr id='{{_id}}'>
+                <td>{{_id}}</td>
+                <td>{{title}}</td>
+                <td>{{description}}</td>
+                <td>{{code}}</td>
+                <td>{{price}}</td>
+                <td>{{stock}}</td>
+                <td>{{category}}</td>
+                <td><button class='btn btn-danger btn-sm' onclick='deleteProduct("{{_id}}")'>Eliminar</button></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class='row mt-4'>
+      <div class='col-12'>
+        <nav aria-label='Pagination'>
+          <ul class='pagination justify-content-center'>
+            {{#if hasPrevPage}}
+              <li class='page-item'>
+                <a class='page-link' href='{{prevLink}}'>&laquo; Previous page</a>
+              </li>
+            {{/if}}
+            <!-- Mostrar el número de página actual -->
+            <li class='page-item active'>
+              <span class='page-link'>Page {{currentPage}}</span>
+            </li>
+            {{#if hasNextPage}}
+              <li class='page-item'>
+                <a class='page-link' href='{{nextLink}}'>Next page &raquo;</a>
+              </li>
+            {{/if}}
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class='row justify-content-center'>
+      <div class='col-md-8 col-lg-4 mt-3'>
+        <h2 class='text-center pb-2'>Agregar Producto</h2>
+        <form id='productForm' class='bg-light p-4 rounded'>
+          <div class='row'>
+            <div class='col-md-6'>
+              <div class='form-group'>
+                <label for='title'>Título:</label>
+                <input type='text' class='form-control' id='title' name='title' required />
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class='form-group'>
+                <label for='code'>Código:</label>
+                <input type='text' class='form-control' id='code' name='code' required />
+              </div>
+            </div>
+          </div>
+          <div class='form-group'>
+            <label for='description'>Descripción:</label>
+            <textarea class='form-control' id='description' name='description' required></textarea>
+          </div>
+          <div class='row'>
+            <div class='col-md-6'>
+              <div class='form-group'>
+                <label for='price'>Precio:</label>
+                <input type='number' class='form-control' id='price' name='price' step='0.01' required />
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class='form-group'>
+                <label for='stock'>Stock:</label>
+                <input type='number' class='form-control' id='stock' name='stock' required />
+              </div>
+            </div>
+          </div>
+          <div class='form-group'>
+            <label for='category'>Categoría:</label>
+            <input type='text' class='form-control' id='category' name='category' required />
+          </div>
+          <div class='form-group'>
+            <label for='file'>Imágenes:</label>
+            <input type='file' class='form-control' id='file' name='image' multiple />
+            <small class='form-text text-muted'>* Campo no requerido</small>
+          </div>
+          <div class='text-center mt-4 d-grid gap-2'>
+            <button type='submit' class='btn btn-primary mb-2'>Agregar producto</button>
+            <a class='btn btn-outline-danger' href='/' role='button'>Home</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src='/js/realtimeProducts/index.js'></script>
+  </body>
+</html>
