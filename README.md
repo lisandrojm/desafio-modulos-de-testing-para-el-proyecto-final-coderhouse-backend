@@ -1,4 +1,4 @@
-# desafio_modulos_de_testing_para_el_proyecto_final
+# DESAFÍO ENTREGABLE - Módulos de testing para el proyecto final - Coderhouse/Backend
 
 Este repositorio contiene el desafío "Módulos de testing para el proyecto final" con las siguientes características:
 
