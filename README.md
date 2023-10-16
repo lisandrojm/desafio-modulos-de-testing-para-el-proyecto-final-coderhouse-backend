@@ -4,7 +4,7 @@ Este repositorio contiene el desafío "Módulos de testing para el proyecto fina
 
 # Objetivo
 
-## Mocha | Chai | Supertest
+## Mocha + Chai + Supertest
 
 - Realización de módulos de testing para el proyecto principal, utilizando los módulos de mocha, chai y supertest.
 - Incluye 3 (tres) tests desarrollados para:
@@ -17,6 +17,12 @@ Este repositorio contiene el desafío "Módulos de testing para el proyecto fina
 - `/test/carts.test.js`: Configuración del test de carts.
 - `/test/products.test.js`: Configuración del test de products.
 - `/test/sessions.test.js`: Configuración del test de sessions.
+
+### Comando para ejecutar el test:
+
+```bash
+npm test
+```
 
 ### Video de "Módulos de testing para el proyecto final"
 
@@ -59,23 +65,11 @@ Sigue estos pasos para instalar y configurar el proyecto:
 
    Asegúrate de tener MongoDB en ejecución , la URL de conexión correcta y todas las variables de entorno configuradas en el archivo `.env`.
 
-5. Inicia la aplicación con el siguiente comando:
+5. Inicia el test con el siguiente comando:
 
    ```bash
-   npm start
+   npm test
    ```
-
-   Esto iniciará el servidor Node.js y estará escuchando en el puerto especificado en el archivo `.env`.
-
-6. Accede a la aplicación en tu navegador web ingresando la siguiente URL:
-
-   ```
-   http://localhost:<PUERTO_DE_LA_APP>
-   ```
-
-   Asegúrate de reemplazar `<PUERTO_DE_LA_APP>` con el número de puerto especificado en el archivo `.env`.
-
-7. Ahora podrás utilizar la vista de Login en la aplicación.
 
 ## Estructura general del proyecto
 
