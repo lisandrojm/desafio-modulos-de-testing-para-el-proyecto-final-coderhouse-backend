@@ -26,6 +26,10 @@ npm test
 
 ### Video de "Módulos de testing para el proyecto final"
 
+
+https://github.com/lisandrojm/desafio_modulos_de_testing_para_el_proyecto_final/assets/35199683/0a0c0df9-6c41-48e5-a23c-dcd006ee389a
+
+
 ---
 
 ## Requisitos
