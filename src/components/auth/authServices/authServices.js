@@ -58,6 +58,8 @@ class AuthServices {
 
       const data = newUser;
       const token = await JWTService.generateJwt({ id: savedUser._id });
+      /* Repository */
+      await usersServices.findByIdAndUpdate(savedUser._id, { token }, { new: true });
 
       /* Repository */
       /*       let updatedUser = await usersServices.findByIdAndUpdate(savedUser._id, { token }, { new: true }); */
