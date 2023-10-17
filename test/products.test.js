@@ -7,6 +7,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const request = require('supertest');
 const req = require('../src/utils/logger/loggerSetup');
+const { productsServices } = require('../src/repositories/index');
 
 const getRandomEmail = () => {
   return `user${Math.floor(Math.random() * 10000)}@example.com`;
@@ -61,6 +62,8 @@ describe('FreeloECOM API / Router de products', () => {
     expect(createProductResponse.body.success).to.be.true;
     expect(createProductResponse.body.payload.message).to.equal('Producto agregado correctamente');
     expect(typeof productIdToDelete).to.equal('string');
+    expect(createProductResponse.body.payload.payload.title).to.equal(newProduct.title);
+    expect(createProductResponse.body.payload.payload.description).to.equal(newProduct.description);
 
     req.logger.test(`POST /api/products ~ Product add ~ pid: ${productIdToDelete}`);
   });
@@ -70,6 +73,7 @@ describe('FreeloECOM API / Router de products', () => {
 
     expect(getAllProductsResponse.status).to.equal(200);
     expect(getAllProductsResponse.body.success).to.be.true;
+    expect(getAllProductsResponse.body.payload.payload.payload).to.be.an('array');
 
     req.logger.test(`GET /api/products ~ Products get ~ success: ${getAllProductsResponse.body.success}`);
     req.logger.test(`GET /api/products ~ Products get ~ object: ${getAllProductsResponse.body.payload.payload}`);
@@ -77,10 +81,14 @@ describe('FreeloECOM API / Router de products', () => {
 
   it('DELETE /api/products/:pid: Debe eliminar un producto correctamente', async function () {
     const deleteProductResponse = await request(app).delete(`/api/products/${productIdToDelete}`).set('Cookie', `jwt=${adminCookie}`);
+    const productId = deleteProductResponse.body.payload.payload._id;
 
     expect(deleteProductResponse.status).to.equal(200);
     expect(deleteProductResponse.body.success).to.be.true;
     expect(deleteProductResponse.body.payload.message).to.equal('Producto eliminado correctamente');
+    // Verifica que se haya eliminado el producto correctamente en la base de datos
+    const productInDB = await productsServices.findById(productId);
+    expect(productInDB).to.be.null;
 
     req.logger.test(`DELETE /api/products ~ Product delete ~ pid: ${productIdToDelete}`);
   });

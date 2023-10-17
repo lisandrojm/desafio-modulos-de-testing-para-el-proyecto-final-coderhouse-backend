@@ -7,6 +7,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const request = require('supertest');
 const req = require('../src/utils/logger/loggerSetup');
+const { cartsServices } = require('../src/repositories/index');
 
 const getRandomEmail = () => {
   return `user${Math.floor(Math.random() * 10000)}@example.com`;
@@ -59,6 +60,7 @@ describe('FreeloECOM API / Router de carts', () => {
     expect(createCartResponse.body.success).to.be.true;
     expect(createCartResponse.body.payload.payload.message).to.equal('Nuevo carrito creado');
     expect(typeof cartId).to.equal('string');
+    expect(createCartResponse.body.payload.payload.data.products).to.be.an('array').that.is.empty;
 
     req.logger.test(`POST /api/carts ~ Cart create ~ cid: ${cartId}`);
   });
@@ -72,8 +74,8 @@ describe('FreeloECOM API / Router de carts', () => {
     expect(getCartResponse.status).to.equal(200);
     expect(getCartResponse.body.success).to.be.true;
     expect(getCartResponse.body.payload.payload.message).to.equal('Productos del carrito obtenidos correctamente');
-    expect(getCartResponse.body.payload.payload.data).to.deep.equal([]);
     expect(typeof cartId).to.equal('string');
+    expect(getCartResponse.body.payload.payload.data).to.be.an('array').that.is.empty;
 
     req.logger.test(`GET /api/carts/:cid ~ Cart get ~ cid: ${cartId}`);
     req.logger.test(`GET /api/carts/:cid ~ Cart get ~ array: ${JSON.stringify(getCartResponse.body.payload.payload.data, null, 2)}`);
@@ -89,6 +91,10 @@ describe('FreeloECOM API / Router de carts', () => {
     expect(deleteCartResponse.body.success).to.be.true;
     expect(deleteCartResponse.body.payload.message).to.equal('Carrito eliminado correctamente');
     expect(typeof cartId).to.equal('string');
+
+    // Verifica que se haya eliminado correctamente en la base de datos
+    const cartInDB = await cartsServices.findById(cartId);
+    expect(cartInDB).to.be.null;
 
     req.logger.test(`DELETE /api/carts/:cid ~ Cart delete ~ cid: ${cartId}`);
   });
