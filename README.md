@@ -44,7 +44,7 @@ Sigue estos pasos para instalar y configurar el proyecto:
 1. Clona este repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/lisandrojm/desafio_documentar_apidesafio_modulos_de_testing_para_el_proyecto_final
+   git clone https://github.com/lisandrojm/desafio_modulos_de_testing_para_el_proyecto_final
    ```
 
 2. Navega al directorio del proyecto:
